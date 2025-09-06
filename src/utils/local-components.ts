@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs';
+import { promises as fs, existsSync } from 'fs';
 import path from 'path';
 import { logError, logInfo } from './logger.js';
 import { fileURLToPath } from 'url';
@@ -6,8 +6,57 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Path to local components
-const COMPONENTS_DIR = path.resolve(__dirname, '../../components');
+// Path to local components - bundled with build
+function getComponentsDir(): string {
+  // Multiple possible paths when running via different contexts
+  const possiblePaths = [
+    // When run from build directory (local development)
+    path.resolve(__dirname, '../components'),
+    // When bundled in build directory
+    path.resolve(__dirname, 'components'),
+    // When installed as npm package and running from build/
+    path.resolve(__dirname, '../components'),
+    // When installed globally or via npx
+    path.resolve(__dirname, '../../components'),
+    // Alternative npx path
+    path.resolve(__dirname, '../../../components'),
+    // Try from current working directory
+    path.resolve(process.cwd(), 'components'),
+    // Try from current working directory build
+    path.resolve(process.cwd(), 'build/components'),
+  ];
+  
+  for (const testPath of possiblePaths) {
+    try {
+      if (existsSync(testPath)) {
+        const registryPath = path.join(testPath, 'registry.json');
+        const hasRegistry = existsSync(registryPath);
+        
+        if (hasRegistry) {
+          logInfo(`Found components directory at: ${testPath}`);
+          return testPath;
+        }
+      }
+    } catch (error) {
+      // Continue to next path
+    }
+  }
+  
+  // Special handling for bundled components within the package
+  const bundledPath = path.resolve(__dirname, 'components');
+  if (existsSync(bundledPath)) {
+    logInfo(`Using bundled components directory at: ${bundledPath}`);
+    return bundledPath;
+  }
+  
+  // Fallback to original path with error logging
+  const defaultPath = path.resolve(__dirname, '../components');
+  logError(`Could not find components directory. Tried paths: ${possiblePaths.join(', ')}`);
+  logError(`Falling back to: ${defaultPath}`);
+  return defaultPath;
+}
+
+const COMPONENTS_DIR = getComponentsDir();
 const UI_COMPONENTS_DIR = path.join(COMPONENTS_DIR, 'ui');
 const STARS_COMPONENTS_DIR = path.join(COMPONENTS_DIR, 'stars');
 const EXAMPLES_DIR = path.join(COMPONENTS_DIR, 'examples');

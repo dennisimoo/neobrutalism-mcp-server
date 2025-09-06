@@ -1,6 +1,6 @@
 {
   "name": "neobrutalism-mcp-server",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "A Model Context Protocol (MCP) server for neobrutalism components, providing AI assistants with access to component source code, demos, blocks, and metadata.",
   "type": "module",
   "main": "./build/index.js",
@@ -9,15 +9,16 @@
   },
   "files": [
     "build/**/*",
+    "components/**/*",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r components build/",
     "clean": "rm -rf build",
     "prepublishOnly": "npm run clean && npm run build && chmod +x build/index.js",
     "start": "node build/index.js",
-    "dev": "tsc && node build/index.js",
+    "dev": "tsc && cp -r components build/ && node build/index.js",
     "test": "./test-package.sh",
     "examples": "./examples.sh"
   },
@@ -50,7 +51,6 @@
     "axios": "^1.8.4",
     "cheerio": "^1.0.0",
     "joi": "^17.13.3",
-    "neobrutalism-mcp-server": "^1.0.1",
     "uuid": "^10.0.0",
     "winston": "^3.15.0",
     "zod": "^3.24.2"

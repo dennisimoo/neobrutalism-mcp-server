@@ -53,3 +53,6 @@ coverage/
 
 # GitHub templates and workflows (if not needed)
 .github/
+
+# Test files
+test/
