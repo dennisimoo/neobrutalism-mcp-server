@@ -1,6 +1,6 @@
 {
   "name": "neobrutalism-mcp-server",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A Model Context Protocol (MCP) server for neobrutalism components, providing AI assistants with access to component source code, demos, blocks, and metadata.",
   "type": "module",
   "main": "./build/index.js",
