@@ -5,7 +5,7 @@
 
 > **🚀 The fastest way to integrate neobrutalism components into your AI workflow**
 
-A Model Context Protocol (MCP) server that provides AI assistants with comprehensive access to [neobrutalism components](https://neobrutalism.dev/) - a collection of neobrutalism-styled React components based on shadcn/ui.
+A Model Context Protocol (MCP) server that provides AI assistants with comprehensive access to [neobrutalism components](https://www.neobrutalism.dev/) - a collection of neobrutalism-styled React components that work with Next.js, Vite, and other React frameworks.
 
 ## ✨ Key Features
 
@@ -19,6 +19,12 @@ A Model Context Protocol (MCP) server that provides AI assistants with comprehen
 
 ## 🚀 Quick Start
 
+### For Claude Code
+```bash
+claude mcp add neobrutalism -- npx -y neobrutalism-mcp-server
+```
+
+### For Cursor and Other AI Tools
 ```bash
 # Simple usage!
 npx neobrutalism-mcp-server
@@ -26,28 +32,37 @@ npx neobrutalism-mcp-server
 
 **🎯 All components included locally!**
 
+## 🖼️ What You Can Build
+
+![Sample UI generated with this MCP server](./sample.png)
+
+*This entire React interface was generated with Claude Code using this MCP server in just one prompt!*
+
 ## 🎨 Component Categories
 
-This MCP server provides access to neobrutalism components organized in categories:
+This server gives you access to cool neobrutalism components organized in different groups:
 
 | Category | Description | Examples |
 |----------|-------------|----------|
-| **UI Components** | Core neobrutalism-styled components | `button`, `nbutton`, `card`, `ncard`, `dialog` |
-| **Form Components** | Input and form elements | `input`, `ninput`, `label`, `nlabel`, `checkbox` |
-| **Layout Components** | Structure and navigation | `sheet`, `nsheet`, `sidebar`, `navigation-menu` |
-| **Star Components** | Decorative elements | `s1`, `s2`, `s3`, ... `s40` |
+| **UI Components** | Core neobrutalism-styled React components | `button`, `card`, `dialog`, `alert` |
+| **Form Components** | Input and form React components | `input`, `label`, `checkbox`, `textarea` |
+| **Layout Components** | Structure and navigation components | `sheet`, `sidebar`, `navigation-menu` |
+| **Star Components** | Decorative React elements | `s1`, `s2`, `s3`, ... `s40` |
 
-## 🛠️ Essential Setup
+## 🛠️ Setup
 
-### 1. Run Server
+### For Claude Code Users
+```bash
+claude mcp add neobrutalism -- npx -y neobrutalism-mcp-server
+```
+
+### For Other AI Tools
+First run the server:
 ```bash
 npx neobrutalism-mcp-server
 ```
 
-### 2. Integrate with Your Editor
-Configure your AI assistant to use this MCP server:
-
-**Claude Desktop Configuration:**
+Then add this to your AI tool's config:
 ```json
 {
   "mcpServers": {
@@ -59,17 +74,17 @@ Configure your AI assistant to use this MCP server:
 }
 ```
 
-## 🎯 Use Cases
+## 🎯 What You Can Do
 
-- **AI-Powered Development** - Let AI assistants build UIs with neobrutalism components
-- **Component Discovery** - Explore available components and their usage
-- **Rapid Prototyping** - Get complete component implementations
-- **Design Systems** - Build brutalist-inspired design systems
-- **Code Generation** - Generate component code with proper dependencies
+- **Build Cool React UIs** - Let AI help you make React websites with neobrutalism style (not HTML pages)
+- **Find Components** - See what React components are available and how to use them
+- **Make Prototypes Fast** - Get working React component code quickly
+- **Create Design Systems** - Build consistent brutalist-style React designs
+- **Generate Code** - Get React component code with all the right dependencies
 
 ## 📦 Available Tools
 
-The MCP server provides these tools for AI assistants:
+This server gives AI tools these helpful functions:
 
 - `list_components` - Get all available neobrutalism components
 - `get_component` - Get source code for a specific component
@@ -79,14 +94,14 @@ The MCP server provides these tools for AI assistants:
 
 ## 🎨 Component Examples
 
-### UI Components
-- `button` / `nbutton` - Neobrutalism-styled buttons
-- `card` / `ncard` - Container components with bold borders
-- `dialog` / `ndialog` - Modal dialogs with stark styling
-- `input` / `ninput` - Form input elements
+### React UI Components
+- `button` - Neobrutalism-styled React button components
+- `card` - Container React components with bold borders
+- `dialog` - Modal React dialog components with stark styling
+- `input` - Form input React components
 
-### Stars Components
-- `s1` to `s40` - Decorative star and ornamental components
+### React Star Components
+- `s1` to `s40` - Decorative star and ornamental React components
 - Each with unique neobrutalism styling
 
 ## 📦 Installation
@@ -104,7 +119,7 @@ npm install neobrutalism-mcp-server
 
 ## 🔗 Repository
 
-This server includes components locally from the [ekmas/neobrutalism-components](https://github.com/ekmas/neobrutalism-components) repository.
+This server includes components from [https://www.neobrutalism.dev/](https://www.neobrutalism.dev/) and the [ekmas/neobrutalism-components](https://github.com/ekmas/neobrutalism-components) repository.
 
 ## 📄 License
 
@@ -118,6 +133,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-**Made with ❤️ by [Dennis Khylkouski](https://github.com/dennisimoo) for the neobrutalism design movement**
+**Made by [https://github.com/dennisimoo](https://github.com/dennisimoo)**
 
 **Star ⭐ this repo if you find it helpful!**
